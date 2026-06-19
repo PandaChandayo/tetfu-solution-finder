@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.main-content {
+    padding: 30px;
+}
+
+/* タブメニュー */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #eee;
+}
+
+.tab-button {
+    padding: 12px 20px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    color: #666;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    color: #667eea;
+}
+
+.tab-button.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+}
+
+/* タブコンテンツ */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* テト譜エディタ */
+.editor-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.tetris-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    gap: 2px;
+    background: #333;
+    padding: 10px;
+    border-radius: 5px;
+    aspect-ratio: 10 / 20;
+}
+
+.tetris-cell {
+    background: #eee;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.tetris-cell:hover {
+    transform: scale(0.95);
+}
+
+.tetris-cell.filled {
+    background: #667eea;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.editor-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.editor-controls button {
+    padding: 12px 20px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.editor-controls button:hover {
+    background: #764ba2;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.tetfu-input {
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 0.9em;
+    transition: border-color 0.3s ease;
+}
+
+.tetfu-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.tetfu-link {
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 5px;
+    word-break: break-all;
+    font-size: 0.85em;
+}
+
+.tetfu-link a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.tetfu-link a:hover {
+    text-decoration: underline;
+}
+
+/* Solution Finder */
+.finder-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.finder-input,
+.finder-results {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.finder-input label {
+    font-weight: 500;
+    color: #333;
+}
+
+#board-input {
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 5px;
+    font-family: monospace;
+    font-size: 0.9em;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+#board-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.finder-input button {
+    padding: 12px 20px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.finder-input button:hover {
+    background: #764ba2;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.finder-results h3 {
+    color: #333;
+    margin-top: 10px;
+}
+
+.result-item {
+    padding: 15px;
+    background: #f5f5f5;
+    border-left: 4px solid #667eea;
+    border-radius: 5px;
+}
+
+.result-item h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#setup-rate-value,
+#parfe-rate-value {
+    font-weight: bold;
+    color: #667eea;
+    font-size: 1.2em;
+}
+
+.pattern-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.pattern-item {
+    padding: 10px;
+    background: white;
+    border: 2px solid #eee;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.pattern-item:hover {
+    border-color: #667eea;
+    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.2);
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .editor-container,
+    .finder-container {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+}

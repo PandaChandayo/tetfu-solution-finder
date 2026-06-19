@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テト譜 × Solution Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>テト譜 × Solution Finder</h1>
+            <p>テトリス盤面エディタ + パフェ分析ツール</p>
+        </header>
+
+        <div class="main-content">
+            <!-- タブメニュー -->
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab('editor')">テト譜エディタ</button>
+                <button class="tab-button" onclick="switchTab('finder')">Solution Finder</button>
+            </div>
+
+            <!-- テト譜エディタセクション -->
+            <section id="editor-section" class="tab-content active">
+                <h2>テト譜エディタ</h2>
+                <div class="editor-container">
+                    <div id="grid" class="tetris-grid"></div>
+                    <div class="editor-controls">
+                        <button onclick="clearGrid()">クリア</button>
+                        <button onclick="generateLink()">リンク生成</button>
+                        <button onclick="exportTetfu()">テト譜で開く</button>
+                        <input type="text" id="tetfu-code" placeholder="テト譜コードをここに入力" class="tetfu-input">
+                        <button onclick="importTetfu()">インポート</button>
+                    </div>
+                    <div id="tetfu-link" class="tetfu-link"></div>
+                </div>
+            </section>
+
+            <!-- Solution Finderセクション -->
+            <section id="finder-section" class="tab-content">
+                <h2>Solution Finder</h2>
+                <div class="finder-container">
+                    <div class="finder-input">
+                        <label>盤面を入力（またはテト譜から自動読み込み）</label>
+                        <textarea id="board-input" placeholder="盤面データをここに入力" rows="10"></textarea>
+                        <button onclick="analyzeSolutions()">分析開始</button>
+                    </div>
+                    <div class="finder-results">
+                        <h3>分析結果</h3>
+                        <div id="setup-rate" class="result-item">セットアップ率: <span id="setup-rate-value">-</span></div>
+                        <div id="parfe-rate" class="result-item">パフェ率: <span id="parfe-rate-value">-</span></div>
+                        <div id="patterns" class="result-item">
+                            <h4>パフェパターン</h4>
+                            <div id="pattern-list" class="pattern-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
